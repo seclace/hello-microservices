@@ -2,6 +2,7 @@ import { Controller, Get, Query } from '@nestjs/common';
 import { AppService } from './app.service';
 import { GetSumQueryDto } from './dto/get-sum-query.dto';
 import { ParseNumbersArrayPipe } from './pipe/parse-numbers-array.pipe';
+import { Human } from './interface/human.interface';
 
 @Controller()
 export class AppController {
@@ -17,5 +18,10 @@ export class AppController {
   @Get('lorem')
   async getLorem(): Promise<string> {
     return this.appService.getLorem();
+  }
+
+  @Get('human')
+  async getRandomHuman(): Promise<Human> {
+    return this.appService.getRandomHuman();
   }
 }

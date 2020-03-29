@@ -10,6 +10,7 @@ async function bootstrap() {
   const configsService = await app.get<ConfigService>(ConfigService);
   const mathServiceHost = configsService.get<string>('MATH_SERVICE_HOST');
   const mathServicePort = +configsService.get<number>('MATH_SERVICE_PORT');
+  const appPort = +configsService.get<number>('APP_PORT');
 
   app.useGlobalPipes(new ValidationPipe({
     transform: true,
@@ -24,6 +25,6 @@ async function bootstrap() {
     }
   });
 
-  await app.listen(3000);
+  await app.listen(appPort);
 }
 bootstrap();
