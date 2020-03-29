@@ -13,4 +13,9 @@ export class AppController {
   ): Promise<number> {
     return this.appService.getSum(query.numbers);
   }
+
+  @Get('lorem')
+  async getLorem(): Promise<string> {
+    return this.appService.getLorem();
+  }
 }

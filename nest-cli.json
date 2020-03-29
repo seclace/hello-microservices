@@ -25,6 +25,15 @@
       "compilerOptions": {
         "tsConfigPath": "apps/math-world/tsconfig.app.json"
       }
+    },
+    "lorem-ipsum-world": {
+      "type": "application",
+      "root": "apps/lorem-ipsum-world",
+      "entryFile": "main",
+      "sourceRoot": "apps/lorem-ipsum-world/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/lorem-ipsum-world/tsconfig.app.json"
+      }
     }
   }
 }

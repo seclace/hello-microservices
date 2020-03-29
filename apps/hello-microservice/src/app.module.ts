@@ -3,7 +3,7 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { ClientProxyFactory, Transport } from '@nestjs/microservices';
 import { ConfigModule, ConfigService } from '@nestjs/config';
-import { MATH_SERVICE_TOKEN } from './app.constant';
+import { LOREM_SERVICE_TOKEN, MATH_SERVICE_TOKEN } from './app.constant';
 
 @Module({
   imports: [
@@ -23,6 +23,17 @@ import { MATH_SERVICE_TOKEN } from './app.constant';
         return ClientProxyFactory.create({
           transport: Transport.TCP,
           options: { host, port },
+        })
+      },
+      inject: [ConfigService],
+    },
+    {
+      provide: LOREM_SERVICE_TOKEN,
+      useFactory: (configService: ConfigService) => {
+        const url = configService.get<string>('LOREM_SERVICE_URL');
+        return ClientProxyFactory.create({
+          transport: Transport.REDIS,
+          options: { url },
         })
       },
       inject: [ConfigService],

@@ -1,1 +1,2 @@
 export const MATH_SERVICE_TOKEN = 'MATH_SERVICE';
+export const LOREM_SERVICE_TOKEN = 'LOREM_SERVICE';

@@ -9,13 +9,12 @@ async function bootstrap() {
     AppModule,
     {
       logger: ['debug', 'warn', 'error', 'log', 'verbose'],
-      transport: Transport.TCP,
+      transport: Transport.REDIS,
       options: {
-        host: process.env.MATH_SERVICE_HOST,
-        port: +process.env.MATH_SERVICE_PORT as number,
+        url: process.env.LOREM_SERVICE_URL,
       }
-    }
+    },
   );
-  await app.listen(() => console.log('Math World microservice is listening'));
+  await app.listen(() => console.log('Lorem Ipsum microservice is listening'));
 }
 bootstrap();
