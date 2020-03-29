@@ -1,0 +1,30 @@
+{
+  "collection": "@nestjs/schematics",
+  "sourceRoot": "apps/hello-microservice/src",
+  "monorepo": true,
+  "root": "apps/hello-microservice",
+  "compilerOptions": {
+    "webpack": true,
+    "tsConfigPath": "apps/hello-microservice/tsconfig.app.json"
+  },
+  "projects": {
+    "hello-microservice": {
+      "type": "application",
+      "root": "apps/hello-microservice",
+      "entryFile": "main",
+      "sourceRoot": "apps/hello-microservice/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/hello-microservice/tsconfig.app.json"
+      }
+    },
+    "math-world": {
+      "type": "application",
+      "root": "apps/math-world",
+      "entryFile": "main",
+      "sourceRoot": "apps/math-world/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/math-world/tsconfig.app.json"
+      }
+    }
+  }
+}
