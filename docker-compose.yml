@@ -1,0 +1,64 @@
+version: '3'
+services:
+    hello:
+        build:
+            context: .
+            dockerfile: ./app.Dockerfile
+        ports:
+            - "3000:3000"
+        links:
+            - redis
+            - rabbit
+            - math
+            - lorem
+            - human
+        networks:
+            - human
+            - lorem
+            - math
+
+    human:
+        build:
+            context: .
+            dockerfile: ./human-generator.Dockerfile
+        links:
+            - rabbit
+        networks:
+            - human
+
+    lorem:
+        build:
+            context: .
+            dockerfile: ./lorem-ipsum-world.Dockerfile
+        links:
+            - redis
+        networks:
+            - lorem
+
+    math:
+        build:
+            context: .
+            dockerfile: ./math-world.Dockerfile
+        ports:
+            - "9001:9001"
+        networks:
+            - math
+
+    redis:
+        image: "redis:alpine"
+        ports:
+            - "6379:6379"
+        networks:
+            - lorem
+
+    rabbit:
+        image: "rabbitmq:alpine"
+        ports:
+            - "5672:5672"
+        networks:
+            - human
+
+networks:
+    lorem:
+    math:
+    human:
